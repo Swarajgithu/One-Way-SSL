@@ -31,7 +31,7 @@ openssl version
 Open PowerShell and run:
 
 ```powershell
-cd c:\Users\andey\Downloads\hi\ssl-demo
+cd C:\ssl-demo\ssl-demo
 .\setup-nginx.ps1
 ```
 
