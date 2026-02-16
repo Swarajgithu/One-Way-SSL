@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-Way SSL Demo - Hello World</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            max-width: 800px;
+        }
+
+        .lock-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #8892b0;
+            margin-bottom: 40px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-card h2 {
+            color: #00d4ff;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .info-card p {
+            color: #ccd6f6;
+            line-height: 1.8;
+            text-align: left;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #00d4ff20, #00ff8820);
+            padding: 12px 24px;
+            border-radius: 50px;
+            margin: 20px 0;
+            border: 1px solid #00d4ff40;
+        }
+
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: blink 1.5s ease-in-out infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .protocol-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .protocol-item {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .protocol-item h3 {
+            color: #00ff88;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .protocol-item p {
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            margin-top: 40px;
+            color: #5a6a8a;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="lock-icon">🔒</div>
+        <h1>Hello, Secure World!</h1>
+        <p class="subtitle">One-Way SSL/TLS Connection Established</p>
+
+        <div class="status-badge">
+            <span class="status-dot"></span>
+            <span>HTTPS Connection Active</span>
+        </div>
+
+        <div class="info-card">
+            <h2>🎉 Congratulations!</h2>
+            <p>
+                You've successfully established a secure HTTPS connection using <strong>one-way SSL/TLS</strong>. 
+                This means the server (Nginx) has presented its certificate to your browser, and your browser 
+                has validated it (or you accepted the self-signed certificate warning).
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h2>🔐 What Just Happened?</h2>
+            <p>
+                <strong>1. Your browser connected to port 443 (HTTPS)</strong><br>
+                <strong>2. The server sent its SSL certificate</strong><br>
+                <strong>3. Your browser validated the certificate</strong> (or showed a warning for self-signed)<br>
+                <strong>4. Secure keys were exchanged</strong><br>
+                <strong>5. All communication is now encrypted!</strong>
+            </p>
+        </div>
+
+        <div class="protocol-info">
+            <div class="protocol-item">
+                <h3>CONNECTION TYPE</h3>
+                <p>One-Way SSL</p>
+            </div>
+            <div class="protocol-item">
+                <h3>ENCRYPTION</h3>
+                <p>TLS 1.2/1.3</p>
+            </div>
+            <div class="protocol-item">
+                <h3>PORT</h3>
+                <p>443 (HTTPS)</p>
+            </div>
+            <div class="protocol-item">
+                <h3>CERTIFICATE</h3>
+                <p>Self-Signed</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>One-Way SSL Demo | For Learning Purposes Only</p>
+        </footer>
+    </div>
+
+    <script>
+        // Display connection info
+        console.log('%c🔒 Secure Connection Info', 'font-size: 16px; font-weight: bold; color: #00d4ff;');
+        console.log('Protocol:', location.protocol);
+        console.log('Host:', location.host);
+        console.log('This page was served over HTTPS using one-way SSL/TLS.');
+    </script>
+</body>
+</html>

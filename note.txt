@@ -1,0 +1,37 @@
+Step 1: Open PowerShell as Administrator
+Right-click PowerShell → Run as Administrator (needed for Nginx and mkcert)
+
+Step 2: Navigate to the project folder
+powershell
+cd c:\Users\andey\Downloads\hi\ssl-demo
+Step 3: Setup Nginx (one-time)
+powershell
+powershell -ExecutionPolicy Bypass -File .\setup-nginx.ps1
+This downloads and configures Nginx in the project folder.
+
+Step 4: Generate SSL Certificate (one-time)
+Option A — Using mkcert (shows 🔒 lock icon):
+
+powershell
+.\mkcert.exe -install
+.\mkcert.exe -key-file certs/server.key -cert-file certs/server.crt localhost 127.0.0.1 ::1
+Option B — Using OpenSSL (self-signed, no lock icon):
+
+powershell
+powershell -ExecutionPolicy Bypass -File .\generate-cert.ps1
+Step 5: Start the HTTPS Server
+powershell
+powershell -ExecutionPolicy Bypass -File .\start-server.ps1
+Step 6: Verify in Browser
+Open https://localhost in Chrome/Edge → see the 🔒 lock icon
+
+Step 7: Test with curl
+powershell
+curl.exe -v https://localhost -k
+You'll see the TLS handshake, HTTP/1.1 200 OK, and the HTML content.
+
+Step 8: Stop the Server (when done)
+powershell
+powershell -ExecutionPolicy Bypass -File .\stop-server.ps1
+Quick Summary
+setup-nginx.ps1  →  mkcert -install + generate certs  →  start-server.ps1  →  browser + curl  →  stop-server.ps1
